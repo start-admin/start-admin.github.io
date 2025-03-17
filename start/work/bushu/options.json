@@ -1,0 +1,64 @@
+
+{
+    "title": "运动助手",
+    "notice": "提示网络错误请用浏览器打开网站",
+    "email": "yumengkeji@qq.com",
+    "recordNo": "",
+    "links": [
+      {
+        "text": "语梦云任务",
+        "url": "https://shuabu.cn/"
+      }
+  
+    ],
+    "content": [
+      "系统支持Android / iOS",
+      "自定义步数支持 微信/支付宝",
+      "请把网站收藏添加至书签防丢失！",
+      "有任何问题请加入群聊"
+    ],
+    "primary-content": [
+   
+    ],
+    "buttons": [
+      {
+        "text": "加入群聊",
+        "url": "http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=q591KZlU69tLfSpf9IyPGsNHrRg6uPuS&authKey=K5PXbOsfOItgp0GT0vR915nEPiGcaZPkYd2UILK5YCHeV%2FJMLyGNyrMrFelM5CKE&noverify=0&group_code=817889980",
+        "target": false
+      },
+      {
+        "text": "使用教程",
+        "url": "https://support.qq.com/products/169951/blog/14294",
+        "target": false
+      }
+    ],
+    "top-ad": [
+  
+    ],
+    "center-ad": [
+   
+    ],
+    "bottom-ad": [
+   
+    ],
+    "cnzz": {
+      "open": false,
+      "src": "https://v1.cnzz.com/z_stat.php?id=1279858422&online=2",
+      "id": "cnzz_stat_icon_1279858422"
+    },
+    "51la": {
+      "open": false,
+      "value": "IWZ1bmN0aW9uKHApeyJ1c2Ugc3RyaWN0IjshZnVuY3Rpb24odCl7dmFyIHM9d2luZG93LGU9ZG9jdW1lbnQsaT1wLGM9IiIuY29uY2F0KCJodHRwczoiPT09ZS5sb2NhdGlvbi5wcm90b2NvbD8iaHR0cHM6Ly8iOiJodHRwOi8vIiwic2RrLjUxLmxhL2pzLXNkay1wcm8ubWluLmpzIiksbj1lLmNyZWF0ZUVsZW1lbnQoInNjcmlwdCIpLHI9ZS5nZXRFbGVtZW50c0J5VGFnTmFtZSgic2NyaXB0IilbMF07bi50eXBlPSJ0ZXh0L2phdmFzY3JpcHQiLG4uc2V0QXR0cmlidXRlKCJjaGFyc2V0IiwiVVRGLTgiKSxuLmFzeW5jPSEwLG4uc3JjPWMsbi5pZD0iTEFfQ09MTEVDVCIsaS5kPW47dmFyIG89ZnVuY3Rpb24oKXtzLkxBLmlkcy5wdXNoKGkpfTtzLkxBP3MuTEEuaWRzJiZvKCk6KHMuTEE9cCxzLkxBLmlkcz1bXSxvKCkpLHIucGFyZW50Tm9kZS5pbnNlcnRCZWZvcmUobixyKX0oKX0oe2lkOiJLRXBQMFE5NFh2YVNKMzRpIixjazoiS0VwUDBROTRYdmFTSjM0aSJ9KTs="
+    },
+    "modal": {
+      "open": true,
+      "redText": [
+        "提示账号密码错误就是错误，别说什么没错。",
+         "不记得账号密码就重新注册，别问我我也不知道。"
+      ],
+      "text": "",
+      "bigText": "",
+      "image": "",
+      "url": ""
+    }
+  }

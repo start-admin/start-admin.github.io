@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        :root {
+            --pc-primary: #6366f1;
+            --pc-accent: #a855f7;
+        }
+
+        /* 基础布局 */
+        .pc-style-layout {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* 卡片样式 */
+        .pc-style-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e5e7eb;
+        }
+
+        /* 表单样式 */
+        .pc-style-form {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .pc-style-select,
+        .pc-style-input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid var(--pc-primary);
+            border-radius: 8px;
+            appearance: none;
+        }
+
+        .pc-style-select {
+            background: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236366f1' stroke-width='2'%3e%3cpath d='M6 9l6 6 6-6'/%3e%3c/svg%3e") no-repeat right 12px center;
+        }
+
+        /* 按钮样式 */
+        .pc-style-btn {
+            background: var(--pc-primary) !important;
+            color: white !important;
+            border-radius: 8px;
+            padding: 14px 20px !important;
+            font-size: 16px !important;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* 移动端适配 */
+        @media (max-width: 768px) {
+            .pc-style-layout {
+                padding: 12px;
+            }
+
+            .pc-style-card {
+                border-radius: 8px;
+                padding: 1rem;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            }
+
+            .video-container {
+                aspect-ratio: 16/9;
+                width: 100%;
+                height: auto;
+            }
+        }
+
+        /* 通用优化 */
+        body {
+            -webkit-tap-highlight-color: transparent;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="pc-style-layout">
+        <!-- 头部 -->
+        <div class="pc-style-card">
+            <h1 style="color: var(--pc-primary); margin-bottom: 0.5rem">VIP视频解析</h1>
+            <p style="color: #666">输入视频地址开始解析</p>
+        </div>
+
+        <!-- 表单 -->
+        <div class="pc-style-card">
+            <form class="pc-style-form">
+                <select class="pc-style-select">
+                    <option>线路1 - 超清解析</option>
+                    <option>线路2 - 极速体验</option>
+                    <option>线路3 - 备用线路1</option>
+                    <option>线路4 - 备用线路2</option>
+                    <option>线路5 - 备用线路3</option>
+                </select>
+
+                <input type="url" placeholder="请输入视频地址" class="pc-style-input" style="border: 2px solid #e5e7eb">
+                <!-- 保留必要内联样式 -->
+
+                <button type="submit" class="pc-style-btn">立即解析</button>
+            </form>
+        </div>
+
+        <!-- 视频容器 -->
+        <div class="pc-style-card">
+            <div class="video-container">
+                <iframe style="width:100%;height:100%;border:none;border-radius:8px" allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+
+        <!-- API列表 -->
+        <div class="pc-style-card">
+            <h3 style="color: var(--pc-primary); margin-bottom: 1rem">解析接口列表</h3>
+            <div style="background: #f8fafc; padding: 12px; border-radius: 8px">
+                https://jx.xmflv.cc/?url=<br>
+                https://yparse.ik9.cc/?url=<br>
+                https://jx.nnxv.cn/tv.php?url=<br>
+                https://api.bd.al?url=<br>
+                https://a.wkvip.net/?url=<br>
+            </div>
+        </div>
+    </div>
+
+    <!-- 新增解析逻辑 -->
+    <script>
+        document.querySelector('form').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // 获取线路选择
+            const line = document.querySelector('.pc-style-select').value;
+            let apiBase;
+
+            if (line.includes('线路1')) {
+                apiBase = 'https://jx.xmflv.cc/?url=';
+            } else if (line.includes('线路2')) {
+                apiBase = 'https://yparse.ik9.cc/?url=';
+            } else if (line.includes('线路3')) {
+                apiBase = 'https://jx.nnxv.cn/tv.php?url='; 
+            } else if (line.includes('线路4')) {
+                apiBase = 'https://api.bd.al?url='; 
+            } else if (line.includes('线路5')) {
+                apiBase = 'https://a.wkvip.net/?url='; // 替换为实际的解析接口
+            }else {
+                apiBase = 'https://jx.xmflv.cc/?url='; // 默认线路
+            }
+
+            // 获取视频地址
+            const videoUrl = document.querySelector('.pc-style-input').value;
+            const iframe = document.querySelector('iframe');
+
+            if (videoUrl) {
+                iframe.src = apiBase + encodeURIComponent(videoUrl);
+                iframe.scrollIntoView({ behavior: 'smooth' }); // 自动滚动到视频
+            } else {
+                alert('请先输入有效的视频地址');
+            }
+        });
+    </script>
+    <!-- <div class="text-center mt-3">
+        <a href="index.html" class="text-small">切换到桌面版</a>
+    </div> -->
+</body>
+
+</html>
