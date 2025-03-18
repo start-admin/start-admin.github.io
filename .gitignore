@@ -1,9 +1,3 @@
-.idea
-.vscode
-node_modules
-.editorconfig
-**/.tmp/*
-package-lock.json
-
+# jekyll local file
 .jekyll*
 _site
