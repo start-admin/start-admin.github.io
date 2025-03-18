@@ -12,7 +12,7 @@ jobs:
       - name: Setup Ruby
         uses: actions/setup-ruby@v3
         with:
-          ruby-version: 3.1
+          ruby-version: 3.1  # 必须与 GitHub Pages 环境一致
 
       - name: Install Dependencies
         run: bundle install
@@ -24,4 +24,5 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./_site
+          publish_dir: ./_site  # Jekyll 生成的静态文件目录
+          keep_files: true      # 保留历史文件
