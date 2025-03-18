@@ -101,12 +101,8 @@ theme: kira
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
-# deploy:
-#   type: ''
 deploy:
-  type: git
-  repo: https://github.com/start-admin/start-admin.github.io.git
-  branch: gh-pages  # 存放生成的静态文件的分支
+  type: ''
 
 aplayer:
   asset_inject: false # 禁止 aplayer 注入资源
