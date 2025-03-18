@@ -1,25 +1,27 @@
 name: Deploy Blog
 on:
   push:
-    branches:
-      - main  # 如果你的主分支是 main
+    branches: [ "main" ]
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - name: Setup Ruby
+        uses: actions/setup-ruby@v3
         with:
-          node-version: 20
+          ruby-version: 3.1
 
       - name: Install Dependencies
-        run: npm install
+        run: bundle install
 
-      - name: Generate & Deploy
-        run: |
-          npm install hexo-deployer-git --save
-          hexo generate
-          hexo deploy
+      - name: Build Site
+        run: bundle exec jekyll build
+
+      - name: Deploy to Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./_site
