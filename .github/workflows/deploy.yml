@@ -1,52 +1,33 @@
-name: Hexo Auto Deploy
+name: Deploy Hexo to GitHub Pages
 
 on:
   push:
-    branches: [main]
+    branches:
+      - source  # 监听的源文件分支
 
 jobs:
-  deploy:
+  build-deploy:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write  # 确保 GITHUB_TOKEN 有写入权限
-
     steps:
     - name: Checkout Code
       uses: actions/checkout@v4
-      with:
-        submodules: recursive  # 关键！确保主题子模块被拉取
 
     - name: Setup Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: "20"
+        node-version: 20  # 根据你的Node版本修改
 
-    - name: Cache Dependencies
-      uses: actions/cache@v3
-      with:
-        path: |
-          node_modules
-          ~/.npm
-        key: ${{ runner.os }}-hexo-${{ hashFiles('package-lock.json') }}
-
-    - name: Install Dependencies
+    - name: Install Hexo and Dependencies
       run: |
-        npm install -g hexo-cli
-        npm ci  # 更严格的依赖安装
+        npm install hexo-cli -g
+        npm install
 
-    - name: Generate & Clean
-      run: |
-        hexo clean
-        hexo generate
-        # 彻底清理 Jekyll 干扰
-        touch ./public/.nojekyll
-        find ./public -name '*.md' -not -name 'README.md' -exec rm -f {} \;  # 移除残留 MD 文件
+    - name: Generate Static Files
+      run: hexo generate
 
-    - name: Deploy to GH Pages
+    - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./public
-        publish_branch: gh-pages
-        force_orphan: true  # 确保每次都是全新部署
-        keep_files: false   # 清理旧文件
+        publish_branch: main  # 部署到存放静态文件的分支（如main、gh-pages）
