@@ -106,3 +106,20 @@ deploy:
 
 aplayer:
   asset_inject: false # 禁止 aplayer 注入资源
+
+name: Disable Default Jekyll Build
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  disable-jekyll:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.11.0
+
+      - name: Skip Jekyll Build
+        run: |
+          echo "SKIP_JEKYLL=1" >> $GITHUB_ENV
